@@ -1,8 +1,13 @@
 
+import Podcast from './components/Podcast'
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>ddd</h1>
+    <main className="flex min-h-screen flex-wrap items-center justify-around p-24">
+      <Podcast />
+      <Podcast />
+      <Podcast />
+
     </main>
   )
 }
