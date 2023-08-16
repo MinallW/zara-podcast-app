@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
       .then((res) => res.json())
-      .then(({feed}) => {
+      .then(({ feed }) => {
         console.log(feed.entry)
         setData(feed.entry)
         setLoading(false)
@@ -28,7 +28,13 @@ export default function Home() {
       <main className="flex min-h-screen flex-wrap items-center justify-around p-24 gap-24">
         {data.map((podcast, index) => {
           return (
-            <Podcast key={index}/>
+            <Podcast
+              key={index}
+              title={podcast['im:name']}
+              author={podcast['im:artist']}
+              imageURL={podcast['im:image'][2]}
+              description={podcast['summary']}
+            />
           )
         })}
       </main>

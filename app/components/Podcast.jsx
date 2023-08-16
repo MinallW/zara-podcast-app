@@ -3,22 +3,34 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import Image from 'next/image'
+import Divider from '@mui/joy/Divider';
 
-export default function Podcast() {
+function limitString(str, maxLength) {
+    if (str.length <= maxLength) {
+        return str;
+    } else {
+        return str.substring(0, maxLength) + "...";
+    }
+}
+
+export default function Podcast({ title, author, imageURL, description }) {
+    console.log(description)
     return (
-        <Card variant="outlined" sx={{ width: 320 }}>
+        <Card variant="outlined" orientation='horizontal' sx={{ width: 400 }}>
             <CardOverflow>
-                <img
-                    src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
-                    srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
-                    loading="lazy"
-                    alt=""
-                />
+                <AspectRatio ratio="1" sx={{ width: 200 }}>
+                    <img
+                        src={imageURL.label}
+                        loading="lazy"
+                        alt="Podcast OfficialImage"
+                    />
+                </AspectRatio>
             </CardOverflow>
-            <CardContent>
-                <Typography level="title-md">Podcast Title</Typography>
-                <Typography level="body-sm">Author: Some author of the podcast</Typography>
+            <CardContent sx={{ overflow: 'hidden' }}>
+                <Typography level="title-md" variant="outlined">{title.label}</Typography>
+                <Typography level="body-sm" sx={{ mt: 0.5 }}>{limitString(description.label, 140)}</Typography>
+                <Divider />
+                <Typography level="body-xs" color='neutral' sx={{ mt: 0.5, textAlign: 'right' }}>By: {author.label}</Typography>
             </CardContent>
         </Card>
     )
