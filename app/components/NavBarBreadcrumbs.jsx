@@ -8,12 +8,13 @@ import { usePathname } from 'next/navigation'
 
 export default function NavBarBreadcrumbs() {
     const pathname = usePathname()
-    console.log(pathname)
+
+    const breadcrumbsArray = pathname.split('/').splice(1)
 
     return (
         <Breadcrumbs separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
-            <Typography>Amy</Typography>
-            {['Characters', 'Futurama', 'TV Shows', 'Home'].map((item) => (
+            <Typography>Inicio</Typography>
+            {breadcrumbsArray.map((item) => (
                 <Link key={item} color="neutral" href="#separators">
                     {item}
                 </Link>
