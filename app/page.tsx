@@ -11,12 +11,12 @@ export default function Home() {
   const [isLoading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
+  const [filterValue, setFilterValue] = useState(''); // State for filtering
 
   useEffect(() => {
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
       .then((res) => res.json())
       .then(({ feed }) => {
-        console.log(feed.entry)
         setData(feed.entry)
         setLoading(false)
       })
@@ -24,16 +24,30 @@ export default function Home() {
 
   if (isLoading) return <p>Loading...</p>
 
+  const filteredData = data.filter(podcast => {
+    const title = podcast['im:name'].label.toLowerCase();
+    const author = podcast['im:artist'].label.toLowerCase();
+    const filter = filterValue.toLowerCase();
+
+    return title.includes(filter) || author.includes(filter);
+  });
+
   // Calculate the start and end index of items for the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   // Extract the items to display for the current page
-  const itemsToDisplay = data.slice(startIndex, endIndex)
+  const itemsToDisplay = filteredData.slice(startIndex, endIndex);
 
   return (
     <>
       <div className='flex items-center justify-around'>
-        <Input size="lg" className='m-8 z-0' />
+        <Input
+          size="lg"
+          className='m-8 z-0'
+          value={filterValue}
+          onChange={(e) => setFilterValue(e.target.value)}
+          placeholder="Filter by title or author"
+        />
       </div>
       <main className="flex min-h-screen flex-wrap items-center justify-around p-24 gap-24">
         {itemsToDisplay.map((podcast, index) => {
