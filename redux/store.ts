@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counterSlice";
+import podcastReducer from './features/podcastSlice'
 
 export const store = configureStore({
   reducer: {
-    counterReducer,
+    podcastReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
 });

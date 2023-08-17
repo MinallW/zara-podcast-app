@@ -13,7 +13,11 @@ export default function NavBarBreadcrumbs() {
 
     return (
         <Breadcrumbs separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
-            <Typography>Inicio</Typography>
+            <Typography>
+                <Link href={'/'}>
+                    Inicio
+                </Link>
+            </Typography>
             {breadcrumbsArray.map((item) => (
                 <Link key={item} color="neutral" href="#separators">
                     {item}
