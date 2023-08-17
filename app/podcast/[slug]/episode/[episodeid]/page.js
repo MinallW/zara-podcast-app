@@ -1,7 +1,10 @@
-export default function PodcastEpisode({ params }) {
+// 
+
+export default async function EpisodeInternal({ params }) {
+
     return (
         <>
-            <h1>Episode Id {params.id}</h1>
+            <h1>Episode Id</h1>
         </>
     )
 }

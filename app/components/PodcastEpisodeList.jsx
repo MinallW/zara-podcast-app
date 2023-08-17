@@ -2,9 +2,9 @@ import Stack from '@mui/joy/Stack';
 import { Typography } from '@mui/material';
 import Card from '@mui/joy/Card';
 import Table from '@mui/joy/Table';
+import Link from 'next/link';
 
 async function getPodcastEpisodes(id) {
-    console.log(`https://itunes.apple.com/lookup?id=${id}&entity=song`)
     const res = await fetch(`https://itunes.apple.com/lookup?id=${id}&entity=podcastEpisode&limit=20`,
         { next: { revalidate: 86400 } }) // 1 day cache
 
@@ -65,7 +65,11 @@ export default async function PodcastEpisodeList({ trackCount, podcastId }) {
                             console.log(element)
                             return (
                                 <tr key={index}>
-                                    <td>{element.trackName}</td>
+                                    <td>
+                                        <Link href={`/podcast/${podcastId}/episode/${element.trackId}`} className='text-blue-600'>
+                                            {element.trackName}
+                                        </Link>
+                                    </td>
                                     <td>{formatDateToDDMMYYYY(element.releaseDate)}</td>
                                     <td>{formatTrackDuration(element.trackTimeMillis)}</td>
                                 </tr>
