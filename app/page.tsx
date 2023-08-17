@@ -14,7 +14,8 @@ export default function Home() {
   const [filterValue, setFilterValue] = useState(''); // State for filtering
 
   useEffect(() => {
-    fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
+    fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
+      { next: { revalidate: 3600 } })
       .then((res) => res.json())
       .then(({ feed }) => {
         setData(feed.entry)
