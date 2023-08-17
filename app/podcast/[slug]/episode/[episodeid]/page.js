@@ -1,7 +1,7 @@
-export default function PodcastPage() {
+export default function PodcastEpisode({ params }) {
     return (
         <>
-            <h1>Episode Id</h1>
+            <h1>Episode Id {params.id}</h1>
         </>
     )
 }

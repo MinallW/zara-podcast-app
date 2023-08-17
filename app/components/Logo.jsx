@@ -1,7 +1,11 @@
+import Link from "next/link";
+
 export default function Navbar() {
     return (
         <>
-        <bold>Podcaster!</bold>
+            <Link href={'/'}>
+                <bold>Podcaster!</bold>
+            </Link>
         </>
     );
 }

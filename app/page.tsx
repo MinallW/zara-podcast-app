@@ -18,6 +18,7 @@ export default function Home() {
       { next: { revalidate: 86400 } })
       .then((res) => res.json())
       .then(({ feed }) => {
+        console.log(feed.entry)
         setData(feed.entry)
         setLoading(false)
       })
@@ -55,6 +56,7 @@ export default function Home() {
           return (
             <Podcast
               key={index}
+              id={podcast.id.attributes['im:id']}
               title={podcast['im:name']}
               author={podcast['im:artist']}
               imageURL={podcast['im:image'][2]}
