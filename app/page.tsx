@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
-      { next: { revalidate: 3600 } })
+      { next: { revalidate: 86400 } })
       .then((res) => res.json())
       .then(({ feed }) => {
         setData(feed.entry)
