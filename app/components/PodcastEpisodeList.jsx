@@ -62,7 +62,6 @@ export default async function PodcastEpisodeList({ trackCount, podcastId }) {
                     </thead>
                     <tbody>
                         {results.map((element, index) => {
-                            console.log(element)
                             return (
                                 <tr key={index}>
                                     <td>
