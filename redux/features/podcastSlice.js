@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 // The podcast chosen, so it is saved across pages. Even more efficient than a client side SPA!
 

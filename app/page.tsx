@@ -69,7 +69,8 @@ export default function Home() {
           variant="outlined"
           shape="rounded"
           onChange={(event, page) => setCurrentPage(page)} // Handle page change
-        />      </main>
+        />
+      </main>
     </>
 
   )

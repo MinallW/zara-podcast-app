@@ -1,12 +1,10 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { select, reset } from "@/redux/features/podcastSlice";
+import { select } from "@/redux/features/podcastSlice";
 
 export default function EpisodeInternal() {
     const podcast = useAppSelector((state) => state.podcastReducer.podcast);
-    const dispatch = useAppDispatch();
-
     return (
         <>
             <div style={{ marginBottom: "4rem", textAlign: "center" }}>
@@ -17,7 +15,6 @@ export default function EpisodeInternal() {
                 >
                     decrement
                 </button>
-                <button onClick={() => dispatch(reset())}>reset</button>
             </div>
         </>
     )
