@@ -6,9 +6,7 @@ import { useAppSelector } from "@/redux/hooks";
 export default function NavBarSpinner() {
     const loading = useAppSelector((state) => state.loadingReducer.loading);
 
-
     if (loading) {
-        
         return (
             <CircularProgress color="neutral" />
         )

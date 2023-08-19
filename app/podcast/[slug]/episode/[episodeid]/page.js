@@ -4,8 +4,12 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Divider from '@mui/joy/Divider';
+import { useEffect } from 'react';
+import { toggle } from '@/redux/features/loadingSlice';
+import { useAppDispatch } from "@/redux/hooks";
 
 export default function EpisodeInternal() {
+    const dispatch = useAppDispatch();
     const localStorageItem = localStorage.getItem("podcastEpisode")
     const {
         title,
@@ -16,6 +20,18 @@ export default function EpisodeInternal() {
         episodeURL,
         episodeDescription
     } = JSON.parse(localStorageItem)
+
+    // The page is loaded quite fast though
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            dispatch(toggle());
+        }, 500); // Delay of 0.5 seconds (500 milliseconds)
+
+        return () => {
+            clearTimeout(timeoutId); // Clear the timeout if the component unmounts or the effect re-runs
+        };
+
+    }, [dispatch]);
 
     return (
         <>
@@ -56,7 +72,7 @@ export default function EpisodeInternal() {
                     >{episodeName}</Typography>
                     <audio controls>
                         <source src={episodeURL} type="audio/mpeg" />
-                            Your browser does not support the audio element.
+                        Your browser does not support the audio element.
                     </audio>
                     <Typography>{episodeDescription}</Typography>
                 </Card>

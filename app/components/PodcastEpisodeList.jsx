@@ -71,7 +71,8 @@ export default async function PodcastEpisodeList({ trackCount, podcastId }) {
                                             podcastEpisodeId={element.trackId}
                                             episodeURL={element.episodeUrl}
                                             episodeName={element.trackName}
-                                            episodeDescription={element.descriptionw}
+                                            episodeDescription={element.description}
+                                            index={index}
                                         />
                                     </td>
                                     <td>{formatDateToDDMMYYYY(element.releaseDate)}</td>

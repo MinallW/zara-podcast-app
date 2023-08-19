@@ -24,7 +24,8 @@ export default function Home() {
         setLoading(false)
         dispatch(toggle())
       })
-  }, [])
+      
+  }, [dispatch])
 
   if (isLoading) return <p>Loading...</p>
 

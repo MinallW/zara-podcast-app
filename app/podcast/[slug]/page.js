@@ -14,7 +14,7 @@ async function getPodcast(id) {
 }
 
 export default async function PodcastPage({ params }) {
-    
+
     const podcastId = params.slug
     const { results } = await getPodcast(podcastId)
     const podcast = results[0]

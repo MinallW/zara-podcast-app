@@ -9,6 +9,7 @@ import Divider from '@mui/joy/Divider';
 import Link from 'next/link'
 import { useAppDispatch } from "@/redux/hooks";
 import { select } from "@/redux/features/podcastSlice";
+import { toggle } from '@/redux/features/loadingSlice';
 
 function limitString(str, maxLength) {
     if (str.length <= maxLength) {
@@ -22,13 +23,16 @@ export default function Podcast({ id, title, author, artworkURL, description }) 
     const dispatch = useAppDispatch();
 
     return (
-        <Link href={`/podcast/${id}`} onClick={() => dispatch(select({
-            title: title.label,
-            description: description.label,
-            author: author.label,
-            artworkURL: artworkURL.label,
-            episodeURL: ''
-        }))}>
+        <Link href={`/podcast/${id}`} onClick={() => {
+            dispatch(select({
+                title: title.label,
+                description: description.label,
+                author: author.label,
+                artworkURL: artworkURL.label,
+                episodeURL: ''
+            }))
+            dispatch(toggle())
+        }}>
             <Card variant="outlined" orientation='horizontal' sx={{ width: 400 }}>
                 <CardOverflow>
                     <AspectRatio ratio="1" sx={{ width: 200 }}>

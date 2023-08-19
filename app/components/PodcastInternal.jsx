@@ -8,7 +8,7 @@ import { useAppSelector } from "@/redux/hooks";
 
 export default function PodcastInternal({ author, imageURL, title }) {
     const podcast = useAppSelector((state) => state.podcastReducer.podcast);
-    
+
     return (
         <Card variant="outlined" sx={{ width: 400 }}>
             <div className='flex justify-center'>
