@@ -4,6 +4,7 @@ import Breadcrumbs from './NavBarBreadcrumbs'
 import NavBarSpinner from './NavBarSpinner'
 
 export default function Navbar() {
+
     return (
         <>
             <div className="w-full h-20 bg-gray-300 sticky top-0 z-10">

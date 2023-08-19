@@ -1,10 +1,9 @@
 "use client"
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppSelector } from "@/redux/hooks";
 import { Link } from "@mui/material";
 
 export default function EpisodeLink({ link, podcastId, podcastEpisodeId, episodeURL, episodeName, episodeDescription }) {
-    const dispatch = useAppDispatch();
     const podcast = useAppSelector((state) => state.podcastReducer.podcast);
 
     return (

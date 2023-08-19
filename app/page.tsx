@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import Podcast from './components/Podcast'
 import Input from '@mui/joy/Input';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import { toggle } from '@/redux/features/loadingSlice';
+import { useAppDispatch } from "@/redux/hooks";
 
 export default function Home() {
   const [data, setData] = useState([])
@@ -12,6 +13,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
   const [filterValue, setFilterValue] = useState(''); // State for filtering
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
@@ -20,6 +22,7 @@ export default function Home() {
       .then(({ feed }) => {
         setData(feed.entry)
         setLoading(false)
+        dispatch(toggle())
       })
   }, [])
 
