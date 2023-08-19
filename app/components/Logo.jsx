@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <>
             <Link href={'/'}>
-                <bold>Podcaster!</bold>
+                Podcaster!
             </Link>
         </>
     );

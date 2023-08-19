@@ -5,11 +5,16 @@ import { select } from "@/redux/features/podcastSlice";
 
 export default function EpisodeInternal() {
     const podcast = useAppSelector((state) => state.podcastReducer.podcast);
+    const localStorageItem = localStorage.getItem("podcastEpisode")
+
+    console.log(JSON.stringify(localStorageItem))
+
+    console.log(podcast)
+
     return (
         <>
             <div style={{ marginBottom: "4rem", textAlign: "center" }}>
                 <h4 style={{ marginBottom: 16 }}>{podcast.title} {podcast.description} {podcast.author} fff</h4>
-
                 <button
                     style={{ marginInline: 16 }}
                 >
